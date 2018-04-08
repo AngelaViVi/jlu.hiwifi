@@ -1,0 +1,35 @@
+/dev/mmcblk0
+tar -C /overlay -cvf - . | tar -C /mnt -xf -
+查看UUID:blkid
+
+config 'mount'
+     option device '/dev/mmcblk0'
+     option target '/overlay'    
+     option uuid '0000-0000' 
+     option fstype 'vfat'        
+     option enabled '1'           
+config 'swap'
+     option uuid '0000-0000'
+     option enabled '1'
+config 'mount'
+     option target '/data'
+     option uuid '0000-0000'
+     option enabled '1'
+
+
+mount /dev/mmcblk0 /overlay 
+
+
+物理地址: ‎70-4D-7B-48-E1-5D
+‎70:4D:7B:48:E1:5D
+704d7b48e15d
+
+IP: 49.140.7.29
+子网掩码:255.255.255.0
+默认网关:49.140.7.254
+DNS:10.10.10.10
+    202.98.18.3
+
+
+00:0C:43:76:20:78
+000C43762078

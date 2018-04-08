@@ -1,0 +1,27 @@
+
+
+包下载地址:http://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/packages/base
+必要包:
+opkg -d sd install libgcc_4.8-linaro-1_ramips_24kec.ipk
+opkg -d sd install libc_0.9.33.2-1_ramips_24kec.ipk
+opkg -d sd install libffi_3.0.13-1_ralink (1).ipk
+opkg -d sd install zlib_1.2.8-1_ralink.ipk
+opkg -d sd install libpthread_0.9.33.2-1_ramips_24kec.ipk
+opkg -d sd install python-mini_2.7.3-2_ralink.ipk
+opkg -d sd install python_2.7.3-2_ralink.ipk
+非必要包:
+opkg install libreadline_6.2-1_ramips_24kec.ipk
+opkg install python-json
+opkg install python-curl
+opkg install python-openssl
+按顺序安装
+
+
+安装完之后,配置python的环境变量:
+(直接执行只能在这次启动的终端中起作用)
+export PATH=$PATH:/app/usr/bin
+(在/etc/profile文件中加入上面这行,就可以每次启动终端都起作用了)
+(执行: source /etc/profile,可以在修改profile文件的当前终端中起作用)
+
+测试:
+python

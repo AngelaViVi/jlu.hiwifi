@@ -1,0 +1,26 @@
+mkfs.ext4 /dev/mmcblk0
+mount /dev/mmcblk0 /mnt
+mkdir /tmp/cproot
+mount --bind / /tmp/cproot
+tar -C /tmp/cproot -cvf - . | tar -C /mnt -xvf -
+sync
+umount /mnt
+umount /tmp/cproot
+
+然后打开/etc/config/fstab文件，修改其中一段配置如下：
+config mount
+    option target /
+    option device /dev/mmcblk0
+    option fstype ext4
+    option options rw,sync
+    option enabled 1
+    option enabled_fsck 0
+
+备注:原来是这样的:
+config 'global'
+	option	anon_swap	'0'
+	option	anon_mount	'1'
+	option	auto_swap	'1'
+	option	auto_mount	'1'
+	option	delay_root	'5'
+	option	check_fs	'0'
